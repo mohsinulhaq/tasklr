@@ -1,0 +1,10 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let member of members">
+    <app-member [memberName]="member"></app-member>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let task of tasks[member]">
+        <app-task [task]="task"></app-task>
+      </li>
+    </ul>
+  </li>
+</ul>

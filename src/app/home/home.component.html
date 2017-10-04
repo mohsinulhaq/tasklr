@@ -1,0 +1,15 @@
+<div class="row">
+  <app-card *ngFor="let module of modules"
+            class="col-12 col-sm-4"
+            [header]="module.name"
+            [body]="module.description"
+            [footer]="module.members"
+            [routerLink]="module.name.toLowerCase()">
+  </app-card>
+  <div class="col-12 col-sm-4" style="margin-top: 20px;">
+    <div style="cursor: pointer;padding: 20px;border: solid #C0C0C0 1px;" class="text-center pop">
+      <button type="button" class="btn btn-info">Create New Project
+      </button>
+    </div>
+  </div>
+</div>
