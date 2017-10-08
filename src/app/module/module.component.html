@@ -1,9 +1,9 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let member of members">
-    <app-member [memberName]="member"></app-member>
+  <li class="list-group-item" *ngFor="let member of members | async">
+    <app-member [memberName]="member.name"></app-member>
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let task of tasks[member]">
-        <app-task [task]="task"></app-task>
+      <li class="list-group-item" *ngFor="let task of tasks | async">
+        <app-task [task]="task.name"></app-task>
       </li>
     </ul>
   </li>

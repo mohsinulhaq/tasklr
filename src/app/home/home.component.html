@@ -1,5 +1,5 @@
 <div class="row">
-  <app-card *ngFor="let module of modules"
+  <app-card *ngFor="let module of modules | async"
             class="col-12 col-sm-4"
             [header]="module.name"
             [body]="module.description"

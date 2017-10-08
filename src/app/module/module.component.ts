@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MemberService } from '../shared/services/member.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-module',
@@ -8,17 +9,14 @@ import { MemberService } from '../shared/services/member.service';
   styleUrls: ['./module.component.scss']
 })
 export class ModuleComponent implements OnInit {
-  members: string[];
-  tasks: object;
+  members: Observable<any[]>;
+  tasks: Observable<any[]>;
 
-  constructor(private router: Router, private memberService: MemberService) { }
+  constructor(private router: Router, private afs: AngularFirestore) { }
 
   ngOnInit() {
     const module = this.router.url.substr(1);
-    this.members = this.memberService.getMembers(module);
-    this.tasks = {};
-    this.members.forEach((member: string) => {
-      this.tasks[member] = this.memberService.getMemberTasks(member, module);
-    });
+    this.members = this.afs.collection('members').valueChanges();
+    this.tasks = this.afs.collection('tasks').valueChanges();
   }
 }

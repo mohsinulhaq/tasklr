@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModuleService } from '../shared/services/module.service';
-import { Module } from '../shared/models/module';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +8,11 @@ import { Module } from '../shared/models/module';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  modules: Module[];
+  modules: Observable<any[]>;
 
-  constructor(private moduleService: ModuleService) { }
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.modules = this.moduleService.getModules();
+    this.modules = this.afs.collection('modules').valueChanges();
   }
 }
