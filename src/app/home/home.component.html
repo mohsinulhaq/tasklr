@@ -4,12 +4,46 @@
             [header]="module.name"
             [body]="module.description"
             [footer]="module.members"
+            [dismissible]="true"
+            (dismissed)="onDismiss($event)"
             [routerLink]="module.name.toLowerCase()">
   </app-card>
-  <div class="col-12 col-sm-4" style="margin-top: 20px;">
-    <div style="cursor: pointer;padding: 20px;border: solid #C0C0C0 1px;" class="text-center pop">
-      <button type="button" class="btn btn-info">Create New Project
-      </button>
+  <div class="col-12 col-sm-4">
+    <div class="text-center new-project-container">
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal">Create New Project</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Module</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                   [class.is-invalid]="form.controls['name'].touched && !form.controls['name'].valid" name="name"
+                   placeholder="Module name" formControlName="name"
+                   required>
+            <br>
+            <input type="text" class="form-control"
+                   [class.is-invalid]="form.controls['description'].touched && !form.controls['description'].valid"
+                   name="description" placeholder="Module description"
+                   formControlName="description" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" value="Add Module" form="form">Add
+          Module
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
     </div>
   </div>
 </div>

@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: ''
+    apiKey: 'AIzaSyBBCdvAx4dJk3gtnISOH2H6rFJfIEXpO9U',
+    authDomain: 'mohsinulhaq-tasklr.firebaseapp.com',
+    databaseURL: 'https://mohsinulhaq-tasklr.firebaseio.com',
+    projectId: 'mohsinulhaq-tasklr',
+    storageBucket: 'mohsinulhaq-tasklr.appspot.com',
+    messagingSenderId: '970993573557'
   }
 };

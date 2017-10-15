@@ -1,11 +1,12 @@
-<div class="card text-center">
+<div class="card">
   <div class="card-header">
     {{ header }}
+    <span *ngIf="dismissible" (click)="onClick($event)" style="float: right">&times;</span>
   </div>
   <div class="card-body">
-    <div class="card-title">{{ body }}</div>
+    {{ body }}
   </div>
   <div class="card-footer text-right">
-    Total Members: {{ footer }}
+    Total members: {{ footer }}
   </div>
 </div>

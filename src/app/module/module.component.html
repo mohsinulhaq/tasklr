@@ -1,9 +1,13 @@
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let member of members | async">
+<ul class="list-group row text-center member-list">
+  <li class="list-group-item col-12 col-md-3 member" *ngFor="let member of members | async">
     <app-member [memberName]="member.name"></app-member>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let task of tasks | async">
+    <hr>
+    <ul class="list-group row task-list">
+      <li class="list-group-item col-12 task" *ngFor="let task of tasks | async">
         <app-task [task]="task.name"></app-task>
+      </li>
+      <li class="list-group row task-list">
+        <button class="btn btn-primary">Add Task</button>
       </li>
     </ul>
   </li>

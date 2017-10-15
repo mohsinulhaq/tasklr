@@ -1,0 +1,14 @@
+.member-list {
+  flex-direction: row;
+  padding: 10px;
+  .member {
+    margin: 10px;
+    .task-list {
+      margin: 10px;
+      .task {
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
